@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="OpenSaveText.DemoWpf.ListDocumentControlDemo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:openSaveText="clr-namespace:OpenSaveText.Model;assembly=OpenSaveText.Model"
+             xmlns:openSaveText1="clr-namespace:OpenSave.Wpf;assembly=OpenSave.Wpf"
+             xmlns:openSaveText11="clr-namespace:OpenSave.Wpf;assembly=OpenSaveText.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <openSaveText:TextObject x:Key="TextDocument" FileName="Title">
+            <openSaveText:TextObject.Text>
+                This is  tePathChangest
+                This is tePathChangest.
+                This is more tePathChangest.
+            </openSaveText:TextObject.Text>
+            </openSaveText:TextObject>
+
+        <openSaveText:TextObject x:Key="TextDocument2" FileName="Title 2">
+            <openSaveText:TextObject.Text>
+                This is  tePathChangest
+                This is tePathChangest.
+                This is more tePathChangest.
+            </openSaveText:TextObject.Text>
+        </openSaveText:TextObject>
+
+        <Storyboard x:Key="Storyboard" >
+            <DoubleAnimation Duration="0:0:0.300" Storyboard.TargetProperty="FontSize" Storyboard.TargetName="TextBlock1" To="28" AutoReverse="True" />
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <UniformGrid Rows="1">
+            <Button Content="Refresh 1" Width="120" Height="30" 
+                Command="{Binding ElementName=ListDocumentsControl,Path=AddCommand}" 
+                CommandParameter="{StaticResource TextDocument}"></Button>
+            <Button Content="Refresh 2" Width="120" Height="30" 
+                Command="{Binding ElementName=ListDocumentsControl,Path=AddCommand}" 
+                CommandParameter="{StaticResource TextDocument2}"></Button>
+        </UniformGrid>
+     
+        <openSaveText11:ListDocumentsControl x:Name="ListDocumentsControl" Grid.Row="1" >
+            <!--<Interactions:Interaction.Triggers>
+                <Interactions:EventTrigger EventName="SelectionChanged" >
+                    <buttonsControl:EventCommandExecuter  Command="{Binding ElementName=OpenSaveControl,Path= FileObjectCommand}" />
+                </Interactions:EventTrigger>
+            </Interactions:Interaction.Triggers>-->
+            <openSaveText11:ListDocumentsControl.Triggers>
+                <EventTrigger RoutedEvent="ListBox.SelectionChanged">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard Storyboard="{StaticResource Storyboard}">
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </openSaveText11:ListDocumentsControl.Triggers>
+        </openSaveText11:ListDocumentsControl>
+
+        <TextBlock x:Name="TextBlock1" Grid.Row="2">
+            The change demonstrates the selection change in document list functioning.
+        </TextBlock>
+
+        <TextBlock x:Name="TextBlock2" Grid.Row="3" Background="WhiteSmoke">
+            <TextBlock.Triggers>
+                <EventTrigger RoutedEvent="TextBlock.MouseEnter" >
+                    <EventTrigger.Actions>
+                        <BeginStoryboard >
+                            <Storyboard >
+                                <ColorAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Background.Color" To="DarkOliveGreen" AutoReverse="True" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </TextBlock.Triggers>
+            The change demonstrates animation in general.
+        </TextBlock>
+    </Grid>
+</UserControl>

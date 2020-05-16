@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:OpenSave.Wpf"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    xmlns:buttonsControl1="clr-namespace:ButtonsControl"
+                  >
+
+
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/OpenSaveText.View;component/Themes/OpenSaveControl.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/OpenSaveText.View;component/Themes/OpenSaveEditorControl.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/OpenSaveText.View;component/Themes/ListDocumentsControl.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <!--<Style TargetType="{x:Type local:RichTextEditor}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RichTextEditor}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <control:TextBoxEx DockPanel.Dock="Top" Width="400" Height="25" x:Name="TitleBox"/>
+                        <control:RichTextBoxEx Grid.Row="1"  x:Name="RichTextBoxEx" Height="400" Width="600"></control:RichTextBoxEx>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+
+
+
+
+
+</ResourceDictionary>

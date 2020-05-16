@@ -1,0 +1,120 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    xmlns:buttonsControl1="clr-namespace:ButtonsControl"
+                    xmlns:local="clr-namespace:OpenSave.Wpf">
+
+
+    <Style TargetType="{x:Type local:OpenSaveControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:OpenSaveControl}">
+
+                    <ItemsControl x:Name="ItemsControl">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"></StackPanel>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <Button Name="New"
+                                Width="60"
+                                Height="50"
+                            ToolTip="{x:Static buttonsControl1:Constants.New}"
+                            
+                            >
+                            <materialDesign:PackIcon Kind="FileOutline" Height="30" Width="30" />
+                        </Button>
+
+                        <Button Name="Open"
+                                Width="60"
+                            Height="50"
+              
+                            ToolTip="{x:Static buttonsControl1:Constants.Open}">
+
+
+                            <materialDesign:PackIcon Kind="FolderOutline" Height="30" Width="30" />
+                        </Button>
+
+                        <Button Name="Save"
+                                Width="60"
+                                Height="50"
+                
+                            ToolTip="{x:Static buttonsControl1:Constants.Save}"
+                         
+                            IsEnabled="True"
+                         >
+                            <materialDesign:PackIcon Kind="ContentSave" Height="30" Width="30"/>
+                        </Button>
+
+                     
+                    </ItemsControl>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--<Style TargetType="{x:Type control:OpenSaveEditorControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type control:OpenSaveEditorControl}">
+                    <DockPanel>
+                        <ToolBarTray DockPanel.Dock="Top">
+                            <ToolBar Background="{x:Null}" Style="{DynamicResource MaterialDesignToolBar}" >
+                                <wpf:OpenSaveControl x:Name="OpenSaveControl" Service="{StaticResource FileService}" >
+                                    <Interactions:Interaction.Triggers>
+                                        <Interactions:EventTrigger EventName="FileObjectChanged" >
+                                            <buttonsControl:EventCommandExecuter  Command="{Binding ElementName=RichTextEditor, Path=OpenCommand}" />
+                                        </Interactions:EventTrigger>
+                                        <Interactions:EventTrigger EventName="Saved" >
+                                            <buttonsControl:EventCommandExecuter  Command="{Binding ElementName=ListDocumentsControl, Path=RefreshCommand}" />
+                                        </Interactions:EventTrigger>
+                                    </Interactions:Interaction.Triggers>
+                                </wpf:OpenSaveControl>
+                                --><!--<folderBrowserEx:DropDownFolderPicker x:Name="DropDownFolderPicker" Height="30" Width="400"  Path="{Binding Path=Default.Path, Source={StaticResource Settings}}">--><!--
+                                <folderBrowserEx:DropDownFolderPicker x:Name="DropDownFolderPicker" Height="30" Width="1000"  Margin="5" Path="{Binding Path=Path, Source={x:Static Application.Current},Mode=TwoWay}">
+                                    <Interactions:Interaction.Triggers>
+                                        <Interactions:EventTrigger EventName="TextObjectChange" >
+                                            <buttonsControl:EventCommandExecuter  Command="{Binding ElementName=OpenSaveControl, Path=SetFileObjectCommand}" />
+                                        </Interactions:EventTrigger>
+                                    </Interactions:Interaction.Triggers>
+                                </folderBrowserEx:DropDownFolderPicker>
+                            </ToolBar>
+                        </ToolBarTray>
+
+                        <wpf:ListDocumentsControl x:Name="ListDocumentsControl" DockPanel.Dock="Left" Height="400" Width="300" DirectoryService="{StaticResource DirectoryService}">
+                            <Interactions:Interaction.Triggers>
+                                <Interactions:EventTrigger EventName="SelectionChanged" >
+                                    <buttonsControl:EventCommandExecuter  Command="{Binding ElementName=OpenSaveControl, Path= SetKeyCommand}" EventArgsConverter="{StaticResource FileObjectToKeyConverter}" />
+                                </Interactions:EventTrigger>
+                                <Interactions:EventTrigger EventName="MouseDoubleClick" >
+                                    <Interactions:InvokeCommandAction  Command="{Binding ElementName=OpenSaveControl, Path= LoadCommand}"  />
+                                </Interactions:EventTrigger>
+                            </Interactions:Interaction.Triggers>
+                            <wpf:ListDocumentsControl.Triggers>
+                                <EventTrigger RoutedEvent="ListBox.SelectionChanged">
+                                    <EventTrigger.Actions>
+                                        <BeginStoryboard Storyboard="{StaticResource Storyboard}"/>
+                                    </EventTrigger.Actions>
+                                </EventTrigger>
+                            </wpf:ListDocumentsControl.Triggers>
+                        </wpf:ListDocumentsControl>
+
+                        <wpf:RichTextEditor x:Name="RichTextEditor">
+                            <Interactions:Interaction.Triggers>
+                                <Interactions:EventTrigger EventName="TextObjectChange" >
+                                    <buttonsControl:EventCommandExecuter  Command="{Binding ElementName=OpenSaveControl, Path=SetFileObjectCommand}" />
+                                </Interactions:EventTrigger>
+                            </Interactions:Interaction.Triggers>
+                        </wpf:RichTextEditor>
+
+
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+
+</ResourceDictionary>

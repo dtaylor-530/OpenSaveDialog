@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+    <!--<DockPanel>
+                <ToolBarTray DockPanel.Dock="Top">
+                    <ToolBar Background="{x:Null}" Style="{DynamicResource MaterialDesignToolBar}" >
+                        <wpf:OpenSaveTextControl x:Name="OpenSaveControl" Service="{StaticResource FileService}" >
+                            <Interactions:Interaction.Triggers>
+                                <Interactions:EventTrigger EventName="FileObjectChanged" >
+                                    <buttonsControl:EventCommandExecuter  Command="{Binding ElementName=RichTextEditor, Path=OpenCommand}" />
+                                </Interactions:EventTrigger>
+                                <Interactions:EventTrigger EventName="Saved" >
+                                    <buttonsControl:EventCommandExecuter  Command="{Binding ElementName=ListDocumentsControl, Path=RefreshCommand}" />
+                                </Interactions:EventTrigger>
+                            </Interactions:Interaction.Triggers>
+                        </wpf:OpenSaveTextControl>
+                        -->
+    <!--<folderBrowserEx:DropDownFolderPicker x:Name="DropDownFolderPicker" Height="30" Width="400"  Path="{Binding Path=Default.Path, Source={StaticResource Settings}}">-->
+    <!--
+                        <folderBrowserEx:DropDownFolderPicker x:Name="DropDownFolderPicker" Height="30" Width="1000"  Margin="5" Path="{Binding Path=Path, Source={x:Static Application.Current},Mode=TwoWay}">
+                            <Interactions:Interaction.Triggers>
+                                <Interactions:EventTrigger EventName="TextObjectChange" >
+                                    <buttonsControl:EventCommandExecuter  Command="{Binding ElementName=OpenSaveControl, Path=SetFileObjectCommand}" />
+                                </Interactions:EventTrigger>
+                            </Interactions:Interaction.Triggers>
+                        </folderBrowserEx:DropDownFolderPicker>
+                    </ToolBar>
+                </ToolBarTray>
+
+                <wpf:ListDocumentsControl x:Name="ListDocumentsControl" DockPanel.Dock="Left" Height="400" Width="300" DirectoryService="{StaticResource DirectoryService}">
+                    <Interactions:Interaction.Triggers>
+                        <Interactions:EventTrigger EventName="SelectionChanged" >
+                            <buttonsControl:EventCommandExecuter  Command="{Binding ElementName=OpenSaveControl, Path= SetKeyCommand}" EventArgsConverter="{StaticResource FileObjectToKeyConverter}" />
+                        </Interactions:EventTrigger>
+                        <Interactions:EventTrigger EventName="MouseDoubleClick" >
+                            <Interactions:InvokeCommandAction  Command="{Binding ElementName=OpenSaveControl, Path= LoadCommand}"  />
+                        </Interactions:EventTrigger>
+                    </Interactions:Interaction.Triggers>
+                    <wpf:ListDocumentsControl.Triggers>
+                        <EventTrigger RoutedEvent="ListBox.SelectionChanged">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard}"/>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </wpf:ListDocumentsControl.Triggers>
+                </wpf:ListDocumentsControl>
+
+                <wpf:RichTextEditor x:Name="RichTextEditor">
+                    <Interactions:Interaction.Triggers>
+                        <Interactions:EventTrigger EventName="TextObjectChange" >
+                            <buttonsControl:EventCommandExecuter  Command="{Binding ElementName=OpenSaveControl, Path=SetFileObjectCommand}" />
+                        </Interactions:EventTrigger>
+                    </Interactions:Interaction.Triggers>
+                </wpf:RichTextEditor>
+
+ 
+            </DockPanel>-->
+</ResourceDictionary>
